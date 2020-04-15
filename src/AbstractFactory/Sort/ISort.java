@@ -2,8 +2,8 @@ package AbstractFactory.Sort;
 
 import java.util.List;
 
-public interface ISort {
+public interface ISort<E> {
 
-    public List<String> sort(List<String> l);
+    public List<E> sort(List<E> l);
     
 }

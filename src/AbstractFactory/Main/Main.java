@@ -12,8 +12,10 @@ public class Main {
         // TODO Auto-generated method stub
         List<String> l = null;
         
-        ISort s = (ISort) new Factory().getSortAlgo();
+        ISort s = (ISort) Factory.getInstance().getInsertionSortAlgo();
         s.sort(l);
+        ISort y = (ISort) Factory.getInstance().getInternalSortAlgo();
+        y.sort(l);
     }
 
 }
