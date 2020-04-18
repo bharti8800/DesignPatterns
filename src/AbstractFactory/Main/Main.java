@@ -27,7 +27,7 @@ public class Main {
         y.addAlgo(new InsertionSort());
         y.addObserver(new Observer("kitty"));
         y.addObserver(new Observer("golden"));
-        System.out.println(new ToLowerCase(y).sort(l));
+        System.out.println(new EncryptSortDecorator(y).sort(l));
         ISortIterator sortingAlgosIterator = y.getSortAlgos();
         System.out.println(sortingAlgosIterator.hasNext());
         

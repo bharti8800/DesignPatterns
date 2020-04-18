@@ -16,11 +16,23 @@ public abstract class AbstractSortDecorator<E> implements ISort<E>{
         // TODO Auto-generated method stub
         return DecoratedSortAlgo.getName();
     }
-
+    
+    public List<E> preSort(List<E> l){
+        return l;
+    }
+    
+    public List<E> postSort(List<E> l){
+        return l;
+    }
+    
     @Override
     public List<E> sort(List<E> l) {
+        
+        List<E> l1 = preSort(l);
+        List<E> l2 = DecoratedSortAlgo.sort(l1);
+        List<E> l3 = postSort(l2);
         // TODO Auto-generated method stub
-        return DecoratedSortAlgo.sort(l);
+        return l3;
     }
     
     

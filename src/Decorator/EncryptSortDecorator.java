@@ -13,9 +13,8 @@ public class EncryptSortDecorator<E> extends AbstractSortDecorator<E>{
         // TODO Auto-generated constructor stub
     }
     
-    public List<E> sort(List<E> l) {
+    public List<E> postSort(List<E> l) {
         
-        l = DecoratedSortAlgo.sort(l);
         List<E> newList = new ArrayList<E>();
         
         Iterator<E> it = l.iterator();
