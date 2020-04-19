@@ -3,6 +3,8 @@ package Decorator;
 import java.util.List;
 
 import AbstractFactory.Sort.ISort;
+import Extension.IExtension;
+import Observer.IObserver;
 
 public abstract class AbstractSortDecorator<E> implements ISort<E>{
 
@@ -35,6 +37,26 @@ public abstract class AbstractSortDecorator<E> implements ISort<E>{
         return l3;
     }
     
+    public void addObserver(IObserver ob) {
+        // TODO Auto-generated method stub
+        this.DecoratedSortAlgo.addObserver(ob);
+    }
     
-    
+    @Override
+    public void addExtension(String name, Class<? extends IExtension> cls) {
+        // TODO Auto-generated method stub
+        this.DecoratedSortAlgo.addExtension(name, cls);
+    }
+
+    @Override
+    public void removeExtension(String name) {
+        // TODO Auto-generated method stub
+        this.DecoratedSortAlgo.removeExtension(name);
+    }
+
+    @Override
+    public IExtension getExtension(String name) {
+        // TODO Auto-generated method stub
+        return this.DecoratedSortAlgo.getExtension(name);
+    }
 }

@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import AbstractFactory.Sort.ISort;
+import Extension.IExtension;
+import Observer.IObserver;
 
 public class EncryptSortDecorator<E> extends AbstractSortDecorator<E>{
 
@@ -24,5 +26,7 @@ public class EncryptSortDecorator<E> extends AbstractSortDecorator<E>{
         return newList;
         
     }
+
+    
 
 }

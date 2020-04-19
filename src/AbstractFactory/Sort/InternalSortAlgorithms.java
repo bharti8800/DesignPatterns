@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import Extension.IExtension;
+import Observer.IObserver;
 import Observer.Observer;
 
 public class InternalSortAlgorithms<E> extends AbstractSort<E> implements ITypeOfSort<E>{
     
-    private List<Observer> observerList = new ArrayList<>();
+    private List<IObserver> observerList = new ArrayList<>();
     private List<ISort<E>> sortAlgos;
     @Override
     public List<E> sort(List<E> l) {
@@ -18,13 +20,13 @@ public class InternalSortAlgorithms<E> extends AbstractSort<E> implements ITypeO
             ISort algo = (ISort)it.next();
             (algo).sort(l);
             String stmt = "Sorting the list using " + algo.getName();
-            notify1(stmt);
+           // notify1(stmt);
             
         }
         return l;
     }
     
-    public void addObserver(Observer ob) {
+    public void addObserver(IObserver ob) {
         this.observerList.add(ob);
     }
     
@@ -36,7 +38,7 @@ public class InternalSortAlgorithms<E> extends AbstractSort<E> implements ITypeO
         Iterator it = this.observerList.iterator();
         while(it.hasNext()) {
             Observer ob = (Observer)it.next();
-            ob.update(stmt);
+            ob.Swapfn(stmt);
         }
     }
     
@@ -58,4 +60,14 @@ public class InternalSortAlgorithms<E> extends AbstractSort<E> implements ITypeO
     public ISortIterator getIterator() {
         return new SortIterator(this.sortAlgos);
     }
+    
+    public void addExtension(String name, Class<? extends IExtension> cls) {
+        ISortIterator sortIterator = this.getIterator();
+        while(sortIterator.hasNext()) {
+            ISort sort = sortIterator.next();
+            sort.addExtension(name, cls);
+            System.out.println("Adding ext to "+ sort.getName());
+        }
+    }
+    
 }
